@@ -26,7 +26,7 @@
 //
 /// \file B1DetectorConstruction.cc
 /// \brief Implementation of the B1DetectorConstruction class
-
+//*
 #include "B1DetectorConstruction.hh"
 
 #include "G4RunManager.hh"
