@@ -368,13 +368,6 @@ G4LogicalVolume* logicTSV_BBVIA30_BM1_5_BM2_5 =
 //                       true);
 // }
 // 计算每行可以放置的TSV数量
-int numTSVsPerRow = static_cast<int>(std::sqrt(527));
-// 确保每行至少有一个TSV
-if (numTSVsPerRow == 0) {
-    numTSVsPerRow = 1;
-}
-// 计算总共需要的行数
-int numRows = (527 + numTSVsPerRow - 1) / numTSVsPerRow;
 
 // 计算TSV之间的水平和垂直间距
 G4double spacingX = (10.57 * mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R) / 30;
