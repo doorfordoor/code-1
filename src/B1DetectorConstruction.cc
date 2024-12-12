@@ -267,6 +267,7 @@ G4ThreeVector posBM2_5 = G4ThreeVector(0,0,0.5*(BM2_5High+BP2_5High));
 // };
 
 //TSVOUTERBGAPAD层
+//BM2_5High = 0.23768*mm;
 G4double TSVOUTERBGAPAD_R =0.135*mm;
 G4Tubs* solidTSVOUTERBGAPAD =
     new G4Tubs("TSVOUTERBGAPAD",
@@ -331,6 +332,85 @@ G4ThreeVector posBM1_5 = G4ThreeVector(0,0,0.5*(BM1_5High+BP1_5High));
                       false,
                       0,
                       true);
+
+//TSV-BBVIA30-BM1_5_BM2_5,copper,r=0.015mm 
+//BM1_5High = 0.24968*mm;
+G4double TSV_BBVIA30_BM1_5_BM2_5R =0.015*mm;
+G4Tubs* solidTSV_BBVIA30_BM1_5_BM2_5 =
+    new G4Tubs("TSV_BBVIA30_BM1_5_BM2_5",
+    0,
+    TSV_BBVIA30_BM1_5_BM2_5R,
+    0.5*(BM1_5High-BM2_5High),
+    0.*deg,
+    360.*deg); 
+G4LogicalVolume* logicTSV_BBVIA30_BM1_5_BM2_5 =
+    new G4LogicalVolume(solidTSV_BBVIA30_BM1_5_BM2_5,
+                        copper,
+                        "TSV_BBVIA30_BM1_5_BM2_5");
+//放置527个TSV_BBVIA30，且不能和TSVOUTERBGAPAD以及其他TSV_BBVIA30重叠
+// for (int i = 0; i < 527; ++i) {
+//     G4double x = (G4UniformRand() - 0.5) * (10.57*mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R);
+//     G4double y = (G4UniformRand() - 0.5) * (9.7*mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R);
+//     G4double z = 0.5 * (BM1_5High + BM2_5High);
+//     G4ThreeVector posTSV_BBVIA30_BM1_5_BM2_5(x, y, z);
+//     while (OverlapWithOtherTSV_BBVIA30_BM1_5_BM2_5(posTSV_BBVIA30_BM1_5_BM2_5, TSV_BBVIA30_BM1_5_BM2_5R)) {
+//      G4double x = (G4UniformRand() - 0.5) * (10.57*mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R);
+//      G4double y = (G4UniformRand() - 0.5) * (9.7*mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R);
+//         posTSV_BBVIA30_BM1_5_BM2_5 = G4ThreeVector(x, y, z);
+//     }
+//     new G4PVPlacement(0,
+//                       posTSV_BBVIA30_BM1_5_BM2_5,
+//                       logicTSV_BBVIA30_BM1_5_BM2_5,
+//                       "TSV_BBVIA30_BM1_5_BM2_5",
+//                       logicEnv,
+//                       false,
+//                       i,
+//                       true);
+// }
+// 计算每行可以放置的TSV数量
+int numTSVsPerRow = static_cast<int>(std::sqrt(527));
+// 确保每行至少有一个TSV
+if (numTSVsPerRow == 0) {
+    numTSVsPerRow = 1;
+}
+// 计算总共需要的行数
+int numRows = (527 + numTSVsPerRow - 1) / numTSVsPerRow;
+
+// 计算TSV之间的水平和垂直间距
+G4double spacingX = (10.57 * mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R) / numTSVsPerRow;
+G4double spacingY = (9.7 * mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R) / numRows;
+
+for (int i = 0; i < 527; ++i) {
+    // 计算当前TSV在网格中的行和列
+    int row = i / numTSVsPerRow;
+    int col = i % numTSVsPerRow;
+
+    // 计算当前TSV的位置
+    G4double x = -0.5 * (10.57 * mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R) + col * spacingX + TSV_BBVIA30_BM1_5_BM2_5R;
+    G4double y = -0.5 * (9.7 * mm - 2 * TSV_BBVIA30_BM1_5_BM2_5R) + row * spacingY + TSV_BBVIA30_BM1_5_BM2_5R;
+    G4double z = 0.5 * (BM1_5High + BM2_5High);
+    G4ThreeVector posTSV_BBVIA30_BM1_5_BM2_5(x, y, z);
+
+    // 检查是否与其他TSV重叠
+    if (OverlapWithOtherTSV_BBVIA30_BM1_5_BM2_5(posTSV_BBVIA30_BM1_5_BM2_5, TSV_BBVIA30_BM1_5_BM2_5R)) {
+        // 如果重叠，打印错误信息并停止程序
+        G4cerr << "TSV at position (" << x << ", " << y << ", " << z << ") overlaps with another TSV!" << G4endl;
+        exit(1);
+    }
+
+    // 创建并放置TSV
+    new G4PVPlacement(0,
+                      posTSV_BBVIA30_BM1_5_BM2_5,
+                      logicTSV_BBVIA30_BM1_5_BM2_5,
+                      "TSV_BBVIA30_BM1_5_BM2_5",
+                      logicEnv,
+                      false,
+                      i,
+                      true);
+}
+
+
+
 
 //BPI_CORE_5层,type:Dielectric,Material:FR_4                      
 G4double BPI_CORE_5High = 0.25768*mm;
@@ -426,6 +506,51 @@ G4ThreeVector posFM1_5 = G4ThreeVector(0,0,0.5*(FM1_5High+FPI_CORE_5High));
                       false,
                       0,
                       true);
+
+//TSV-BBVIA-30-FM1_5_BM1_5,copper,679个，r=0.01mm
+G4double TSV_BBVIA30_FM1_5_BM1_5R = 0.01*mm;
+G4Tubs* solidTSV_BBVIA30_FM1_5_BM1_5 =
+    new G4Tubs("TSV_BBVIA30_FM1_5_BM1_5",
+    0,
+    TSV_BBVIA30_FM1_5_BM1_5R,
+    0.5*(FM1_5High-BM1_5High)
+    0.*deg,
+    360.*deg);
+G4LogicalVolume* logicTSV_BBVIA30_FM1_5_BM1_5 =
+    new G4LogicalVolume(solidTSV_BBVIA30_FM1_5_BM1_5,
+                        copper,
+                        "TSV_BBVIA30_FM1_5_BM1_5");
+//放置679个TSV_BBVIA30_FM1_5_BM1_5,abs(x)>4.5*mm,abs(y)>4.065*mm
+
+// for (int i = 0; i < 679; ++i) {
+//         G4double x = (G4UniformRand() - 0.5) * (10.57*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//         G4double y = (G4UniformRand() - 0.5) * (9.7*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//     while(abs(x) < 4.5*mm +TSV_BBVIA30_FM1_5_BM1_5R && abs(y) < 4.065*mm +TSV_BBVIA30_FM1_5_BM1_5R){
+//         G4double x = (G4UniformRand() - 0.5) * (10.57*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//         G4double y = (G4UniformRand() - 0.5) * (9.7*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//     }
+//     G4double z = 0.5 * (BM1_5High + BM2_5High);
+//     G4ThreeVector posTSV_BBVIA30_FM1_5_BM1_5(x, y, z);
+//     while (OverlapWithOtherTSV_BBVIA30_FM1_5_BM1_5(posTSV_BBVIA30_FM1_5_BM1_5, TSV_BBVIA30_FM1_5_BM1_5R)) {
+//         G4double x = (G4UniformRand() - 0.5) * (10.57*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//         G4double y = (G4UniformRand() - 0.5) * (9.7*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//         while(abs(x) < 4.5*mm +TSV_BBVIA30_FM1_5_BM1_5R && abs(y) < 4.065*mm +TSV_BBVIA30_FM1_5_BM1_5R){
+//             G4double x = (G4UniformRand() - 0.5) * (10.57*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//             G4double y = (G4UniformRand() - 0.5) * (9.7*mm - 2 * TSV_BBVIA30_FM1_5_BM1_5R);
+//         }
+//         posTSV_BBVIA30_FM1_5_BM1_5 = G4ThreeVector(x, y, z);
+//     }
+//     new G4PVPlacement(0,
+//                       posTSV_BBVIA30_FM1_5_BM1_5,
+//                       logicTSV_BBVIA30_FM1_5_BM1_5,
+//                       "TSV_BBVIA30_FM1_5_BM1_5",
+//                       logicEnv,
+//                       false,
+//                       i,
+//                       true);
+// }
+
+
 
 //FP1_5,type:Dielectric,Material:FR_4
 G4double FP1_5High = 0.42768*mm;
@@ -541,6 +666,116 @@ G4ThreeVector posBM2_4 = G4ThreeVector(0,0,0.5*(BM2_4High+BP2_4High));
                       0,
                       true);
 
+//TSVINNERBGAPAD4,BM2_-FM1_5,r=0.03mm
+G4double TSVINNERBGAPAD4R = 0.03*mm;
+G4Tubs* solidTSVINNERBGAPAD4 =
+    new G4Tubs("TSVINNERBGAPAD4",
+    0,
+    TSVINNERBGAPAD4R,
+    0.5*(BM2_4High-FM1_5High)
+    0.*deg,
+    360.*deg);
+G4LogicalVolume* logicTSVINNERBGAPAD4 =
+    new G4LogicalVolume(solidTSVINNERBGAPAD4,
+                        copper,
+                        "TSVINNERBGAPAD4");
+G4int nTSVINNERBGAPAD4 = 0;                        
+for(G4double x = -4*mm; x<=4*mm; x+=0.5*mm){
+    for(G4double y = 0.625*mm; y<=3.625*mm; y+=0.5*mm){
+        G4double z = 0.5 * (FM1_5High + BM2_4High);
+        G4ThreeVector posTSVINNERBGAPAD4 = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVINNERBGAPAD4,
+                      logicTSVINNERBGAPAD4,
+                      "TSVINNERBGAPAD4",
+                      logicEnv,
+                      false,
+                      nTSVINNERBGAPAD4,
+                      true);
+        nTSVINNERBGAPAD4++;
+    }
+}
+for(G4double x = -4*mm; x<=4*mm; x+=0.5*mm){
+    for(G4double y = -3.625*mm; y<=-0.125*mm; y+=0.5*mm){
+        G4double z = 0.5 * (FM1_5High + BM2_4High);
+        G4ThreeVector posTSVINNERBGAPAD4 = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVINNERBGAPAD4,
+                      logicTSVINNERBGAPAD4,
+                      "TSVINNERBGAPAD4",
+                      logicEnv,
+                      false,
+                      nTSVINNERBGAPAD4,
+                      true);
+        nTSVINNERBGAPAD4++;
+    }
+}
+for(G4double x = -5.125*mm; x<=5.125*mm; x+=0.25*mm){
+    for(G4double y = 4.125*mm; y<=4.625*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_5High + BM2_4High);
+        G4ThreeVector posTSVINNERBGAPAD4 = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVINNERBGAPAD4,
+                      logicTSVINNERBGAPAD4,
+                      "TSVINNERBGAPAD4",
+                      logicEnv,
+                      false,
+                      nTSVINNERBGAPAD4,
+                      true);
+        nTSVINNERBGAPAD4++;
+    }
+}
+
+for(G4double x = -5.125*mm; x<=5.125*mm; x+=0.25*mm){
+    for(G4double y = -4.625*mm; y<=-4.125*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_5High + BM2_4High);
+        G4ThreeVector posTSVINNERBGAPAD4 = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVINNERBGAPAD4,
+                      logicTSVINNERBGAPAD4,
+                      "TSVINNERBGAPAD4",
+                      logicEnv,
+                      false,
+                      nTSVINNERBGAPAD4,
+                      true);
+        nTSVINNERBGAPAD4++;
+    }
+}
+
+for(G4double x = -5.125*mm; x<=-4.625*mm; x+=0.25*mm){
+    for(G4double y = -3.825*mm; y<=3.825*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_5High + BM2_4High);
+        G4ThreeVector posTSVINNERBGAPAD4 = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVINNERBGAPAD4,
+                      logicTSVINNERBGAPAD4,
+                      "TSVINNERBGAPAD4",
+                      logicEnv,
+                      false,
+                      nTSVINNERBGAPAD4,
+                      true);
+        nTSVINNERBGAPAD4++;
+    }
+}
+
+for(G4double x = 4.625*mm; x<=5.125*mm; x+=0.25*mm){
+    for(G4double y = -3.825*mm; y<=3.825*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_5High + BM2_4High);
+        G4ThreeVector posTSVINNERBGAPAD4 = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVINNERBGAPAD4,
+                      logicTSVINNERBGAPAD4,
+                      "TSVINNERBGAPAD4",
+                      logicEnv,
+                      false,
+                      nTSVINNERBGAPAD4,
+                      true);
+        nTSVINNERBGAPAD4++;
+    }
+}
+
+
+
 //BP1_4层,type:Dielectric,Material:FR_4
 G4double BP1_4High = 0.75736*mm;
 G4Box* solidBP1_4 =
@@ -578,6 +813,26 @@ G4ThreeVector posBM1_4 = G4ThreeVector(0,0,0.5*(BM1_4High+BP1_4High));
                       false,
                       0,
                       true);
+
+//TSV-BBVIA30-BM1_4_BM2_4,copper,897，0.015mm
+G4double TSV_BBVIA30_BM1_4_BM2_4R = 0.015*mm;
+G4Tubs* solidTSV_BBVIA30_BM1_4_BM2_4 =
+    new G4Tubs("TSV_BBVIA30_BM1_4_BM2_4",
+    0,
+    TSV_BBVIA30_BM1_4_BM2_4R,
+    0.5*(BM1_4High+BM2_4High)
+    0.*deg,
+    360.*deg);
+G4LogicalVolume* logicTSV_BBVIA30_BM1_4_BM2_4 =
+    new G4LogicalVolume(solidTSV_BBVIA30_BM1_4_BM2_4,
+                        copper,
+                        "TSV_BBVIA30_BM1_4_BM2_4");
+G4int nTSV_BBVIA30_BM1_4_BM2_4 = 0;
+while(nTSV_BBVIA30_BM1_4_BM2_4<132){
+    G4double z = 0.5 * (BM1_4High + BM2_4High);
+    G4double x = 0.2*mm + TSV_BBVIA30_BM1_4_BM2_4R + G4UniformRand()*(4.1*mm-2*TSV_BBVIA30_BM1_4_BM2_4R);
+
+
 
 //BPI_CORE_4,type:Dielectric,Material:FR_4
 G4double BPI_CORE_4High = 0.76936*mm;
