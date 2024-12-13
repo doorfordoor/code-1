@@ -899,7 +899,7 @@ G4Tubs* solidTSV_BBVIA30_BM1_4_BM2_4 =
     new G4Tubs("TSV_BBVIA30_BM1_4_BM2_4",
     0,
     TSV_BBVIA30_BM1_4_BM2_4R,
-    0.5*(BM1_4High+BM2_4High)
+    0.5*(BM1_4High - BM2_4High)
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSV_BBVIA30_BM1_4_BM2_4 =
@@ -1130,11 +1130,14 @@ G4ThreeVector posFM1_4 = G4ThreeVector(0,0,0.5*(FM1_4High+FPI_CORE_4High));
 G4double TSV_BBVIA_30_FM1_4_BM1_4R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA_30_FM1_4_BM1_4 =
     new G4Tubs("TSV_BBVIA_30_FM1_4_BM1_4",
-                0,
-                TSV_BBVIA_30_FM1_4_BM1_4R);
+               0,
+               TSV_BBVIA_30_FM1_4_BM1_4R,
+               0.5*(FM1_4High-BM1_4High),
+               0.*deg,
+               360.*deg);
 G4LogicalVolume* logicTSV_BBVIA_30_FM1_4_BM1_4 =
     new G4LogicalVolume(solidTSV_BBVIA_30_FM1_4_BM1_4,
-                        EpoxyResin,
+                        copper,
                         "TSV_BBVIA_30_FM1_4_BM1_4");
 G4double TSV_BBVIA_30_FM1_4_BM1_4Xmin1 = -5.25*mm + TSV_BBVIA_30_FM1_4_BM1_4R;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Xmax1 = 5.25*mm - TSV_BBVIA_30_FM1_4_BM1_4R;
@@ -1143,7 +1146,7 @@ G4double TSV_BBVIA_30_FM1_4_BM1_4Ymax1 = -4.05*mm - 3*TSV_BBVIA_30_FM1_4_BM1_4R;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Xstep1 = (TSV_BBVIA_30_FM1_4_BM1_4Xmax1 - TSV_BBVIA_30_FM1_4_BM1_4Xmin1)/47;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Ystep1 = (TSV_BBVIA_30_FM1_4_BM1_4Ymax1 - TSV_BBVIA_30_FM1_4_BM1_4Ymin1)/3;
 for (int nTSV_BBVIA_30_FM1_4_BM1_4=0; nTSV_BBVIA_30_FM1_4_BM1_4<192; nTSV_BBVIA_30_FM1_4_BM1_4++){
-    G4double z = 0.5 * (FM1_4High + FP1_4High);
+    G4double z = 0.5 * (FM1_4High + BM1_4High);
     G4double x = TSV_BBVIA_30_FM1_4_BM1_4Xmin1 + TSV_BBVIA_30_FM1_4_BM1_4Xstep1*(nTSV_BBVIA_30_FM1_4_BM1_4%48);
     G4double y = TSV_BBVIA_30_FM1_4_BM1_4Ymin1 + TSV_BBVIA_30_FM1_4_BM1_4Ystep1*(nTSV_BBVIA_30_FM1_4_BM1_4/48);
     G4ThreeVector posTSV_BBVIA_30_FM1_4_BM1_4 = G4ThreeVector(x, y, z);
@@ -1163,7 +1166,7 @@ G4double TSV_BBVIA_30_FM1_4_BM1_4Ymax2 = 4.8*mm - TSV_BBVIA_30_FM1_4_BM1_4R;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Xstep2 = (TSV_BBVIA_30_FM1_4_BM1_4Xmax2 - TSV_BBVIA_30_FM1_4_BM1_4Xmin2)/47;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Ystep2 = (TSV_BBVIA_30_FM1_4_BM1_4Ymax2 - TSV_BBVIA_30_FM1_4_BM1_4Ymin2)/3;
 for (int nTSV_BBVIA_30_FM1_4_BM1_4=0; nTSV_BBVIA_30_FM1_4_BM1_4<191; nTSV_BBVIA_30_FM1_4_BM1_4++){
-    G4double z = 0.5 * (FM1_4High + FP1_4High);
+    G4double z = 0.5 * (FM1_4High + BM1_4High);
     G4double x = TSV_BBVIA_30_FM1_4_BM1_4Xmin2 + TSV_BBVIA_30_FM1_4_BM1_4Xstep2*(nTSV_BBVIA_30_FM1_4_BM1_4%48);
     G4double y = TSV_BBVIA_30_FM1_4_BM1_4Ymin2 + TSV_BBVIA_30_FM1_4_BM1_4Ystep2*(nTSV_BBVIA_30_FM1_4_BM1_4/48);
     G4ThreeVector posTSV_BBVIA_30_FM1_4_BM1_4 = G4ThreeVector(x, y, z);
@@ -1183,7 +1186,7 @@ G4double TSV_BBVIA_30_FM1_4_BM1_4Ymax3 = 4.05*mm - 3*TSV_BBVIA_30_FM1_4_BM1_4R;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Xstep3 = (TSV_BBVIA_30_FM1_4_BM1_4Xmax3 - TSV_BBVIA_30_FM1_4_BM1_4Xmin3)/3;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Ystep3 = (TSV_BBVIA_30_FM1_4_BM1_4Ymax3 - TSV_BBVIA_30_FM1_4_BM1_4Ymin3)/37;
 for (int nTSV_BBVIA_30_FM1_4_BM1_4=0; nTSV_BBVIA_30_FM1_4_BM1_4<152; nTSV_BBVIA_30_FM1_4_BM1_4++){
-    G4double z = 0.5 * (FM1_4High + FP1_4High);
+    G4double z = 0.5 * (FM1_4High + BM1_4High);
     G4double x = TSV_BBVIA_30_FM1_4_BM1_4Xmin3 + TSV_BBVIA_30_FM1_4_BM1_4Xstep3*(nTSV_BBVIA_30_FM1_4_BM1_4%4);
     G4double y = TSV_BBVIA_30_FM1_4_BM1_4Ymin3 + TSV_BBVIA_30_FM1_4_BM1_4Ystep3*(nTSV_BBVIA_30_FM1_4_BM1_4/4);
     G4ThreeVector posTSV_BBVIA_30_FM1_4_BM1_4 = G4ThreeVector(x, y, z);
@@ -1203,7 +1206,7 @@ G4double TSV_BBVIA_30_FM1_4_BM1_4Ymax4 = 4.05*mm - 3*TSV_BBVIA_30_FM1_4_BM1_4R;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Xstep4 = (TSV_BBVIA_30_FM1_4_BM1_4Xmax4 - TSV_BBVIA_30_FM1_4_BM1_4Xmin4)/3;
 G4double TSV_BBVIA_30_FM1_4_BM1_4Ystep4 = (TSV_BBVIA_30_FM1_4_BM1_4Ymax4 - TSV_BBVIA_30_FM1_4_BM1_4Ymin4)/37;
 for (int nTSV_BBVIA_30_FM1_4_BM1_4=0; nTSV_BBVIA_30_FM1_4_BM1_4<152; nTSV_BBVIA_30_FM1_4_BM1_4++){
-    G4double z = 0.5 * (FM1_4High + FP1_4High);
+    G4double z = 0.5 * (FM1_4High + BM1_4High);
     G4double x = TSV_BBVIA_30_FM1_4_BM1_4Xmin4 + TSV_BBVIA_30_FM1_4_BM1_4Xstep4*(nTSV_BBVIA_30_FM1_4_BM1_4%4);
     G4double y = TSV_BBVIA_30_FM1_4_BM1_4Ymin4 + TSV_BBVIA_30_FM1_4_BM1_4Ystep4*(nTSV_BBVIA_30_FM1_4_BM1_4/4);
     G4ThreeVector posTSV_BBVIA_30_FM1_4_BM1_4 = G4ThreeVector(x, y, z);
@@ -1483,7 +1486,10 @@ G4double TSV_BBVIA30_BM1_3_BM2_3R = 0.015*mm;
 G4Tubs* solidTSV_BBVIA30_BM1_3_BM2_3 =
     new G4Tubs("TSV_BBVIA30_BM1_3_BM2_3",
     0,
-    TSV_BBVIA30_BM1_3_BM2_3R);
+    TSV_BBVIA30_BM1_3_BM2_3R
+    0.5*(BM1_3High-BM2_3High),
+    0.*deg,
+    360.*deg);
 G4LogicalVolume* logicTSV_BBVIA30_BM1_3_BM2_3 =
     new G4LogicalVolume(solidTSV_BBVIA30_BM1_3_BM2_3,
                         copper,
@@ -1708,7 +1714,6 @@ for(G4int nTSV_BBVIA30_BM1_3_BM2_3X = 0; nTSV_BBVIA30_BM1_3_BM2_3X < 120; nTSV_B
 
 
 
-
 //BPI_CORE_3,type:Dielectric,Material:FR_4                                          
 G4double BPI_CORE_3High = 1.25104*mm;
 G4Box* solidBPI_CORE_3 =
@@ -1803,6 +1808,102 @@ G4ThreeVector posFM1_3 = G4ThreeVector(0,0,0.5*(FM1_3High+FPI_CORE_3High));
                       false,
                       0,
                       true);
+
+//TSV-BBVIA-30-FM1_3_BM1_3,0.01mm
+G4double TSV_BBVIA_30_FM1_3_BM1_3R = 0.01*mm;
+G4Tubs* solidTSV_BBVIA_30_FM1_3_BM1_3 =
+    new G4Tubs("TSV_BBVIA_30_FM1_3_BM1_3",
+               0,
+               TSV_BBVIA_30_FM1_3_BM1_3R,
+               0.5*(FM1_3High-BM1_3High),
+               0.*deg,
+               360.*deg);
+G4LogicalVolume* logicTSV_BBVIA_30_FM1_3_BM1_3 =
+    new G4LogicalVolume(solidTSV_BBVIA_30_FM1_3_BM1_3,
+                        copper,
+                        "TSV_BBVIA_30_FM1_3_BM1_3");
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmin1 = -5.25*mm + TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmax1 = 5.25*mm - TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymin1 = -4.8*mm + TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymax1 = -4.05*mm - 3*TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xstep1 = (TSV_BBVIA_30_FM1_3_BM1_3Xmax1 - TSV_BBVIA_30_FM1_3_BM1_3Xmin1)/44;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ystep1 = (TSV_BBVIA_30_FM1_3_BM1_3Ymax1 - TSV_BBVIA_30_FM1_3_BM1_3Ymin1)/3;
+for (int nTSV_BBVIA_30_FM1_3_BM1_3=0; nTSV_BBVIA_30_FM1_3_BM1_3<180; nTSV_BBVIA_30_FM1_3_BM1_3++){
+    G4double z = 0.5 * (FM1_3High + BM1_3High);
+    G4double x = TSV_BBVIA_30_FM1_3_BM1_3Xmin1 + TSV_BBVIA_30_FM1_3_BM1_3Xstep1*(nTSV_BBVIA_30_FM1_3_BM1_3%45);
+    G4double y = TSV_BBVIA_30_FM1_3_BM1_3Ymin1 + TSV_BBVIA_30_FM1_3_BM1_3Ystep1*(nTSV_BBVIA_30_FM1_3_BM1_3/45);
+    G4ThreeVector posTSV_BBVIA_30_FM1_3_BM1_3 = G4ThreeVector(x, y, z);
+    new G4PVPlacement(0,
+                      posTSV_BBVIA_30_FM1_3_BM1_3,
+                      logicTSV_BBVIA_30_FM1_3_BM1_3,
+                      "TSV_BBVIA_30_FM1_3_BM1_3",
+                      logicEnv,
+                      false,
+                      nTSV_BBVIA_30_FM1_3_BM1_3,
+                      true);
+}
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmin2 = -5.25*mm + TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmax2 = 5.25*mm - TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymin2 = 4.05*mm + 3*TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymax2 = 4.8*mm - TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xstep2 = (TSV_BBVIA_30_FM1_3_BM1_3Xmax2 - TSV_BBVIA_30_FM1_3_BM1_3Xmin2)/44;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ystep2 = (TSV_BBVIA_30_FM1_3_BM1_3Ymax2 - TSV_BBVIA_30_FM1_3_BM1_3Ymin2)/3;
+for (int nTSV_BBVIA_30_FM1_3_BM1_3=0; nTSV_BBVIA_30_FM1_3_BM1_3<180; nTSV_BBVIA_30_FM1_3_BM1_3++){
+    G4double z = 0.5 * (FM1_3High + BM1_3High);
+    G4double x = TSV_BBVIA_30_FM1_3_BM1_3Xmin2 + TSV_BBVIA_30_FM1_3_BM1_3Xstep2*(nTSV_BBVIA_30_FM1_3_BM1_3%45);
+    G4double y = TSV_BBVIA_30_FM1_3_BM1_3Ymin2 + TSV_BBVIA_30_FM1_3_BM1_3Ystep2*(nTSV_BBVIA_30_FM1_3_BM1_3/45);
+    G4ThreeVector posTSV_BBVIA_30_FM1_3_BM1_3 = G4ThreeVector(x, y, z);
+    new G4PVPlacement(0,
+                      posTSV_BBVIA_30_FM1_3_BM1_3,
+                      logicTSV_BBVIA_30_FM1_3_BM1_3,
+                      "TSV_BBVIA_30_FM1_3_BM1_3",
+                      logicEnv,
+                      false,
+                      nTSV_BBVIA_30_FM1_3_BM1_3+180,
+                      true);
+}
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmin3 = -5.25*mm + TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmax3 = -4.5*mm - TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymin3 = -4.05*mm + 3*TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymax3 = 4.05*mm - 3*TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xstep3 = (TSV_BBVIA_30_FM1_3_BM1_3Xmax3 - TSV_BBVIA_30_FM1_3_BM1_3Xmin3)/3;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ystep3 = (TSV_BBVIA_30_FM1_3_BM1_3Ymax3 - TSV_BBVIA_30_FM1_3_BM1_3Ymin3)/35;
+for (int nTSV_BBVIA_30_FM1_3_BM1_3=0; nTSV_BBVIA_30_FM1_3_BM1_3<143; nTSV_BBVIA_30_FM1_3_BM1_3++){
+    G4double z = 0.5 * (FM1_3High + BM1_3High);
+    G4double x = TSV_BBVIA_30_FM1_3_BM1_3Xmin3 + TSV_BBVIA_30_FM1_3_BM1_3Xstep3*(nTSV_BBVIA_30_FM1_3_BM1_3%4);
+    G4double y = TSV_BBVIA_30_FM1_3_BM1_3Ymin3 + TSV_BBVIA_30_FM1_3_BM1_3Ystep3*(nTSV_BBVIA_30_FM1_3_BM1_3/4);
+    G4ThreeVector posTSV_BBVIA_30_FM1_3_BM1_3 = G4ThreeVector(x, y, z);
+    new G4PVPlacement(0,
+                      posTSV_BBVIA_30_FM1_3_BM1_3,
+                      logicTSV_BBVIA_30_FM1_3_BM1_3,
+                      "TSV_BBVIA_30_FM1_3_BM1_3",
+                      logicEnv,
+                      false,
+                      nTSV_BBVIA_30_FM1_3_BM1_3+360,
+                      true);
+}
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmin4 = 4.5*mm + TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xmax4 = 5.25*mm - TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymin4 = -4.05*mm + 3*TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ymax4 = 4.05*mm - 3*TSV_BBVIA_30_FM1_3_BM1_3R;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Xstep4 = (TSV_BBVIA_30_FM1_3_BM1_3Xmax4 - TSV_BBVIA_30_FM1_3_BM1_3Xmin4)/3;
+G4double TSV_BBVIA_30_FM1_3_BM1_3Ystep4 = (TSV_BBVIA_30_FM1_3_BM1_3Ymax4 - TSV_BBVIA_30_FM1_3_BM1_3Ymin4)/35;
+for (int nTSV_BBVIA_30_FM1_3_BM1_3=0; nTSV_BBVIA_30_FM1_3_BM1_3<142; nTSV_BBVIA_30_FM1_3_BM1_3++){
+    G4double z = 0.5 * (FM1_3High + BM1_3High);
+    G4double x = TSV_BBVIA_30_FM1_3_BM1_3Xmin4 + TSV_BBVIA_30_FM1_3_BM1_3Xstep4*(nTSV_BBVIA_30_FM1_3_BM1_3%4);
+    G4double y = TSV_BBVIA_30_FM1_3_BM1_3Ymin4 + TSV_BBVIA_30_FM1_3_BM1_3Ystep4*(nTSV_BBVIA_30_FM1_3_BM1_3/4);
+    G4ThreeVector posTSV_BBVIA_30_FM1_3_BM1_3 = G4ThreeVector(x, y, z);
+    new G4PVPlacement(0,
+                      posTSV_BBVIA_30_FM1_3_BM1_3,
+                      logicTSV_BBVIA_30_FM1_3_BM1_3,
+                      "TSV_BBVIA_30_FM1_3_BM1_3",
+                      logicEnv,
+                      false,
+                      nTSV_BBVIA_30_FM1_3_BM1_3+503,
+                      true);
+}
+
+
 
 //FP1_3,type:Dielectric,Material:FR_4
 G4double FP1_3High = 1.42104*mm;  
