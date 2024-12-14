@@ -3907,6 +3907,108 @@ G4ThreeVector posUBM_1 = G4ThreeVector(0,0,0.5*(UBM_1High+FP1_1High));
                       0,
                       true);
 
+G4double TSVIPDPADR = 0.03*mm;
+G4Tubs* solidTSVIPDPAD =
+    new G4Tubs("TSVIPDPAD",
+    0,
+    TSVIPDPADR,
+    0.5*(UBM_1High-FM1_1High)
+    0.*deg,
+    360.*deg);
+G4LogicalVolume* logicTSVIPDPAD =
+    new G4LogicalVolume(solidTSVIPDPAD,
+                        copper,
+                        "TSVIPDPAD");
+G4int nTSVIPDPAD = 0;                        
+for(G4double x = -4*mm; x<=4*mm; x+=0.5*mm){
+    for(G4double y = 0.625*mm; y<=3.625*mm; y+=0.5*mm){
+        G4double z = 0.5 * (FM1_1High + UBM_1High);
+        if (x == 0.*mm&&(y==1.625*mm||y==1.125*mm)) continue;
+        G4ThreeVector posTSVIPDPAD = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVIPDPAD,
+                      logicTSVIPDPAD,
+                      "TSVIPDPAD",
+                      logicEnv,
+                      false,
+                      nTSVIPDPAD++,
+                      true);
+    }
+}
+for(G4double x = -4*mm; x<=4*mm; x+=0.5*mm){
+    for(G4double y = -3.625*mm; y<=-0.125*mm; y+=0.5*mm){
+        G4double z = 0.5 * (FM1_1High + UBM_1High);
+        G4ThreeVector posTSVIPDPAD = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVIPDPAD,
+                      logicTSVIPDPAD,
+                      "TSVIPDPAD",
+                      logicEnv,
+                      false,
+                      nTSVIPDPAD++,
+                      true);
+    }
+}
+for(G4double x = -5.125*mm; x<=5.125*mm; x+=0.25*mm){
+    for(G4double y = 4.125*mm; y<=4.625*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_1High + UBM_1High);
+        G4ThreeVector posTSVIPDPAD = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVIPDPAD,
+                      logicTSVIPDPAD,
+                      "TSVIPDPAD",
+                      logicEnv,
+                      false,
+                      nTSVIPDPAD++,
+                      true);
+    }
+}
+
+for(G4double x = -5.125*mm; x<=5.125*mm; x+=0.25*mm){
+    for(G4double y = -4.625*mm; y<=-4.125*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_1High + UBM_1High);
+        G4ThreeVector posTSVIPDPAD = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVIPDPAD,
+                      logicTSVIPDPAD,
+                      "TSVIPDPAD",
+                      logicEnv,
+                      false,
+                      nTSVIPDPAD++,
+                      true);
+    }
+}
+
+for(G4double x = -5.125*mm; x<=-4.625*mm; x+=0.25*mm){
+    for(G4double y = -3.875*mm; y<=3.875*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_1High + UBM_1High);
+        G4ThreeVector posTSVIPDPAD = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVIPDPAD,
+                      logicTSVIPDPAD,
+                      "TSVIPDPAD",
+                      logicEnv,
+                      false,
+                      nTSVIPDPAD++,
+                      true);
+    }
+}
+
+for(G4double x = 4.625*mm; x<=5.125*mm; x+=0.25*mm){
+    for(G4double y = -3.875*mm; y<=3.875*mm; y+=0.25*mm)    {
+        G4double z = 0.5 * (FM1_1High + UBM_1High);
+        G4ThreeVector posTSVIPDPAD = G4ThreeVector(x, y, z);
+        new G4PVPlacement(0,
+                      posTSVIPDPAD,
+                      logicTSVIPDPAD,
+                      "TSVIPDPAD",
+                      logicEnv,
+                      false,
+                      nTSVIPDPAD++,
+                      true);
+    }
+}
+
 //UNNAMED_002,type:Metal,Material:FR_4
 G4double UNNAMED_002High = 2.4574*mm;
 G4Box* solidUNNAMED_002 =
