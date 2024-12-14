@@ -1513,7 +1513,7 @@ for(G4int nTSV_BBVIA30_BM1_3_BM2_3X = 0; nTSV_BBVIA30_BM1_3_BM2_3X < 100; nTSV_B
                       nTSV_BBVIA30_BM1_3_BM2_3,
                       true);                      
 }
-G4double TSV_BBVIA30_BM1_3_BM2_3step1 = 0.063620*mm;
+G4double TSV_BBVIA30_BM1_3_BM2_3step1 = 0.06126*mm;
 new G4PVPlacement(0,
                 G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_3_BM2_3step1, 3.125*mm + TSV_BBVIA30_BM1_3_BM2_3step1, 0.5*(BM1_3High+BM2_3High)),
                 logicTSV_BBVIA30_BM1_3_BM2_3,
@@ -2178,6 +2178,463 @@ G4LogicalVolume* logicTSV_BBVIA30_BM1_2_BM2_2 =
     new G4LogicalVolume(solidTSV_BBVIA30_BM1_2_BM2_2,
                         copper,
                         "TSV_BBVIA30_BM1_2_BM2_2");
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmin1 = -2.1*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmax1 = 4.1*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymin1 = 0.5*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymax1 = 3.75*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xstep1 = (TSV_BBVIA30_BM1_2_BM2_2Xmax1 - TSV_BBVIA30_BM1_2_BM2_2Xmin1)/18;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ystep1 = (TSV_BBVIA30_BM1_2_BM2_2Ymax1 - TSV_BBVIA30_BM1_2_BM2_2Ymin1)/7;
+for (G4int i = 0; i < 152; i++){
+    G4double x = TSV_BBVIA30_BM1_2_BM2_2Xmin1 + i%19*TSV_BBVIA30_BM1_2_BM2_2Xstep1;
+    G4double y = TSV_BBVIA30_BM1_2_BM2_2Ymin1 + i/19*TSV_BBVIA30_BM1_2_BM2_2Ystep1;
+    G4double z = 0.5 * (BM1_2High + BM2_2High);
+    G4ThreeVector posTSV_BBVIA30_BM1_2_BM2_2 = G4ThreeVector(x, y, z);
+    new G4PVPlacement(0,
+                      posTSV_BBVIA30_BM1_2_BM2_2,
+                      logicTSV_BBVIA30_BM1_2_BM2_2,
+                      "TSV_BBVIA30_BM1_2_BM2_2",
+                      logicEnv,
+                      false,
+                      i,
+                      true);
+}
+G4double TSV_BBVIA30_BM1_2_BM2_2step1 = 0.06369*mm;
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                152,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                153,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                154,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                155,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                156,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                157,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                158,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                159,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                160,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                161,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                162,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(4.00*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                163,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                164,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                165,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                166,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                167,
+                true);      
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                168,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                169,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                170,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -0.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                171,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                172,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                173,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                174,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -1.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                175,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -1.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                176,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -1.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                177,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -1.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                178,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-1.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -1.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                179,
+                true);   
+new G4PVPlacement(0,
+                G4ThreeVector(-2*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -2.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                180,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-2*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -2.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                181,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-2*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -2.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                182,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-2*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -2.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                183,
+                true);     
+new G4PVPlacement(0,
+                G4ThreeVector(-2.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -2.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                184,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-2.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -2.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                185,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-2.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -2.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                186,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-2.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -2.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                187,
+                true);   
+new G4PVPlacement(0,
+                G4ThreeVector(-3.0*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -3.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                188,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-3.0*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -3.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                189,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-3.0*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -3.125*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                190,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-3.0*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -3.125*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                191,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-3.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -3.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                192,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-3.5*mm + TSV_BBVIA30_BM1_2_BM2_2step1, -3.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                193,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(-3.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -3.625*mm + TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                194,
+                true);
+new G4PVPlacement(0,
+                G4ThreeVector(-3.5*mm - TSV_BBVIA30_BM1_2_BM2_2step1, -3.625*mm - TSV_BBVIA30_BM1_2_BM2_2step1, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                195,
+                true);  
+new G4PVPlacement(0,
+                G4ThreeVector(0.125*mm, 4.81378*mm, 0.5*(BM1_2High+BM2_2High)),
+                logicTSV_BBVIA30_BM1_2_BM2_2,
+                "TSV_BBVIA30_BM1_2_BM2_2",
+                logicEnv,
+                false,
+                196,
+                true);  
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmin2 = -5.25*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmax2 = -4.5*mm - 3*TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymin2 = -4.8*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymax2 = 4.8*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xstep2 = (TSV_BBVIA30_BM1_2_BM2_2Xmax2-TSV_BBVIA30_BM1_2_BM2_2Xmin2)/3;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ystep2 = (TSV_BBVIA30_BM1_2_BM2_2Ymax2-TSV_BBVIA30_BM1_2_BM2_2Ymin2)/40;
+for (G4int i=0;i<164;i++){
+    G4double x = TSV_BBVIA30_BM1_2_BM2_2Xmin2 + i%4*TSV_BBVIA30_BM1_2_BM2_2Xstep2;
+    G4double y = TSV_BBVIA30_BM1_2_BM2_2Ymin2 + i/4*TSV_BBVIA30_BM1_2_BM2_2Ystep2;
+    new G4PVPlacement(0,
+                      G4ThreeVector(x,y,0.5*(BM1_2High+BM2_2High)),
+                      logicTSV_BBVIA30_BM1_2_BM2_2,
+                      "TSV_BBVIA30_BM1_2_BM2_2",
+                      logicEnv,
+                      false,
+                      197+i,
+                      true);
+}
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmin3 = 4.5*mm + 3*TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmax3 = 5.25*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymin3 = -4.8*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymax3 = 4.8*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xstep3 = (TSV_BBVIA30_BM1_2_BM2_2Xmax3-TSV_BBVIA30_BM1_2_BM2_2Xmin3)/3;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ystep3 = (TSV_BBVIA30_BM1_2_BM2_2Ymax3-TSV_BBVIA30_BM1_2_BM2_2Ymin3)/40;
+for (G4int i=0;i<164;i++){
+    G4double x = TSV_BBVIA30_BM1_2_BM2_2Xmin3 + i%4*TSV_BBVIA30_BM1_2_BM2_2Xstep3;
+    G4double y = TSV_BBVIA30_BM1_2_BM2_2Ymin3 + i/4*TSV_BBVIA30_BM1_2_BM2_2Ystep3;
+    new G4PVPlacement(0,
+                      G4ThreeVector(x,y,0.5*(BM1_2High+BM2_2High)),
+                      logicTSV_BBVIA30_BM1_2_BM2_2,
+                      "TSV_BBVIA30_BM1_2_BM2_2",
+                      logicEnv,
+                      false,
+                      361+i,
+                      true);
+}
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmin4 = -4.5*mm + 3*TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmax4 = 4.5*mm - 3*TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymin4 = -4.8*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymax4 = -3.9*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xstep4 = (TSV_BBVIA30_BM1_2_BM2_2Xmax4-TSV_BBVIA30_BM1_2_BM2_2Xmin4)/35;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ystep4 = (TSV_BBVIA30_BM1_2_BM2_2Ymax4-TSV_BBVIA30_BM1_2_BM2_2Ymin4)/3;
+for (G4int i=0;i<144;i++){
+    G4double x = TSV_BBVIA30_BM1_2_BM2_2Xmin4 + i%36*TSV_BBVIA30_BM1_2_BM2_2Xstep4;
+    G4double y = TSV_BBVIA30_BM1_2_BM2_2Ymin4 + i/36*TSV_BBVIA30_BM1_2_BM2_2Ystep4;
+    new G4PVPlacement(0,
+                      G4ThreeVector(x,y,0.5*(BM1_2High+BM2_2High)),
+                      logicTSV_BBVIA30_BM1_2_BM2_2,
+                      "TSV_BBVIA30_BM1_2_BM2_2",
+                      logicEnv,
+                      false,
+                      i + 525,
+                      true);
+}
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmin5 = -4.5*mm + 3*TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xmax5 = 4.5*mm - 3*TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymin5 = 3.9*mm + TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ymax5 = 4.8*mm - TSV_BBVIA30_BM1_2_BM2_2R;
+G4double TSV_BBVIA30_BM1_2_BM2_2Xstep5 = (TSV_BBVIA30_BM1_2_BM2_2Xmax5-TSV_BBVIA30_BM1_2_BM2_2Xmin5)/35;
+G4double TSV_BBVIA30_BM1_2_BM2_2Ystep5 = (TSV_BBVIA30_BM1_2_BM2_2Ymax5-TSV_BBVIA30_BM1_2_BM2_2Ymin5)/3;
+for (G4int i=0;i<143;i++){
+    G4double x = TSV_BBVIA30_BM1_2_BM2_2Xmin5 + i%36*TSV_BBVIA30_BM1_2_BM2_2Xstep5;
+    G4double y = TSV_BBVIA30_BM1_2_BM2_2Ymin5 + i/36*TSV_BBVIA30_BM1_2_BM2_2Ystep5;
+    new G4PVPlacement(0,
+                      G4ThreeVector(x,y,0.5*(BM1_2High+BM2_2High)),
+                      logicTSV_BBVIA30_BM1_2_BM2_2,
+                      "TSV_BBVIA30_BM1_2_BM2_2",
+                      logicEnv,
+                      false,
+                      i+ 669,
+                      true);
+}
+
+
+
+
 
 
 //BPI_CORE_2,type:Dielectric,Material:FR_4
