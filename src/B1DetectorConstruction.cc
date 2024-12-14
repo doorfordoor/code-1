@@ -60,13 +60,13 @@ G4NistManager* nist = G4NistManager::Instance();
   G4double env_sizeX = 40*mm, env_sizeY = 40*mm, env_sizeZ = 10*mm;
   G4double world_sizeXY = 100*mm ,world_sizeZ = 50*mm;
   G4Material* air = nist->FindOrBuildMaterial("G4_AIR");
-  G4Material* copper = nist->FindOrBuildMaterial("G4_Cu");    
-  G4double z,a;
-  G4Element* ele_H  = new G4Element("Hydrogen","H" ,z=1. , a =1.00794*g/mole);
-  G4Element* ele_C  = new G4Element("Carbon"  ,"C" ,z=6. , a =12.01 *g/mole);
-  G4Element* ele_O  = new G4Element("Oxygen"  ,"O" ,z=8. , a =16.00 *g/mole);
-  G4Element* ele_N  = new G4Element("Nitrogen","N" ,z=7. , a =14.01 *g/mole); 
-  G4Element* ele_Si = new G4Element("Silicon" ,"Si",z=14., a =28.086*g/mole); 
+  G4Material* copper = nist->FindOrBuildMaterial("G4_Cu");   
+  G4double p, a; 
+  G4Element* ele_H  = new G4Element("Hydrogen","H" ,p=1. , a =1.00794*g/mole);
+  G4Element* ele_C  = new G4Element("Carbon"  ,"C" ,p=6. , a =12.01 *g/mole);
+  G4Element* ele_O  = new G4Element("Oxygen"  ,"O" ,p=8. , a =16.00 *g/mole);
+  G4Element* ele_N  = new G4Element("Nitrogen","N" ,p=7. , a =14.01 *g/mole); 
+  G4Element* ele_Si = new G4Element("Silicon" ,"Si",p=14., a =28.086*g/mole); 
   G4Material* Filled= new G4Material("Filled",1.20*g/cm3, 3);
   Filled->AddElement(ele_C, 11);
   Filled->AddElement(ele_H, 12);
@@ -506,7 +506,7 @@ G4Tubs* solidTSV_BBVIA30_FM1_5_BM1_5 =
     new G4Tubs("TSV_BBVIA30_FM1_5_BM1_5",
     0,
     TSV_BBVIA30_FM1_5_BM1_5R,
-    0.5*(FM1_5High-BM1_5High)
+    0.5*(FM1_5High-BM1_5High),
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSV_BBVIA30_FM1_5_BM1_5 =
@@ -750,7 +750,7 @@ G4Tubs* solidTSVINNERBGAPAD4 =
     new G4Tubs("TSVINNERBGAPAD4",
     0,
     TSVINNERBGAPAD4R,
-    0.5*(BM2_4High-FM1_5High)
+    0.5*(BM2_4High-FM1_5High),
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSVINNERBGAPAD4 =
@@ -899,7 +899,7 @@ G4Tubs* solidTSV_BBVIA30_BM1_4_BM2_4 =
     new G4Tubs("TSV_BBVIA30_BM1_4_BM2_4",
     0,
     TSV_BBVIA30_BM1_4_BM2_4R,
-    0.5*(BM1_4High - BM2_4High)
+    0.5*(BM1_4High - BM2_4High),
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSV_BBVIA30_BM1_4_BM2_4 =
@@ -926,10 +926,10 @@ for(int nTSV_BBVIA30_BM1_4_BM2_4=0; nTSV_BBVIA30_BM1_4_BM2_4<132; nTSV_BBVIA30_B
                       nTSV_BBVIA30_BM1_4_BM2_4,
                       true);
 }
-G4doubel TSV_BBVIA30_BM1_4_BM2_4Xmin2 = -4.2*mm + TSV_BBVIA30_BM1_4_BM2_4R;
+G4double TSV_BBVIA30_BM1_4_BM2_4Xmin2 = -4.2*mm + TSV_BBVIA30_BM1_4_BM2_4R;
 G4double TSV_BBVIA30_BM1_4_BM2_4Xmax2 = 4.2*mm - TSV_BBVIA30_BM1_4_BM2_4R;
-G4doubel TSV_BBVIA30_BM1_4_BM2_4Ymin2 = -3.8*mm + TSV_BBVIA30_BM1_4_BM2_4R;
-G4doubel TSV_BBVIA30_BM1_4_BM2_4Ymax2 = - TSV_BBVIA30_BM1_4_BM2_4R;
+G4double TSV_BBVIA30_BM1_4_BM2_4Ymin2 = -3.8*mm + TSV_BBVIA30_BM1_4_BM2_4R;
+G4double TSV_BBVIA30_BM1_4_BM2_4Ymax2 = - TSV_BBVIA30_BM1_4_BM2_4R;
 G4double TSV_BBVIA30_BM1_4_BM2_4Xstep2 = (TSV_BBVIA30_BM1_4_BM2_4Xmax2 - TSV_BBVIA30_BM1_4_BM2_4Xmin2)/36;
 G4double TSV_BBVIA30_BM1_4_BM2_4Ystep2 = (TSV_BBVIA30_BM1_4_BM2_4Ymax2 - TSV_BBVIA30_BM1_4_BM2_4Ymin2)/3;
 for(int nTSV_BBVIA30_BM1_4_BM2_4=0; nTSV_BBVIA30_BM1_4_BM2_4<148; nTSV_BBVIA30_BM1_4_BM2_4++){
@@ -1342,7 +1342,7 @@ G4Tubs* solidTSVINNERBGAPAD3 =
     new G4Tubs("TSVINNERBGAPAD3",
     0,
     TSVINNERBGAPAD3R,
-    0.5*(BM2_3High-FM1_4High)
+    0.5*(BM2_3High-FM1_4High),
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSVINNERBGAPAD3 =
@@ -1486,7 +1486,7 @@ G4double TSV_BBVIA30_BM1_3_BM2_3R = 0.015*mm;
 G4Tubs* solidTSV_BBVIA30_BM1_3_BM2_3 =
     new G4Tubs("TSV_BBVIA30_BM1_3_BM2_3",
     0,
-    TSV_BBVIA30_BM1_3_BM2_3R
+    TSV_BBVIA30_BM1_3_BM2_3R,
     0.5*(BM1_3High-BM2_3High),
     0.*deg,
     360.*deg);
@@ -1500,7 +1500,7 @@ G4double TSV_BBVIA30_BM1_3_BM2_3Ymin1 = 0.5*mm + TSV_BBVIA30_BM1_3_BM2_3R;
 G4double TSV_BBVIA30_BM1_3_BM2_3Ymax1 = 3.75*mm - TSV_BBVIA30_BM1_3_BM2_3R;
 G4double TSV_BBVIA30_BM1_3_BM2_3Xstep1 = (TSV_BBVIA30_BM1_3_BM2_3Xmax1 - TSV_BBVIA30_BM1_3_BM2_3Xmin1)/9;
 G4double TSV_BBVIA30_BM1_3_BM2_3Ystep1 = (TSV_BBVIA30_BM1_3_BM2_3Ymax1 - TSV_BBVIA30_BM1_3_BM2_3Ymin1)/9;
-for(G4int nTSV_BBVIA30_BM1_3_BM2_3X = 0; nTSV_BBVIA30_BM1_3_BM2_3X < 100; nTSV_BBVIA30_BM1_3_BM2_3X++){
+for(G4int nTSV_BBVIA30_BM1_3_BM2_3 = 0; nTSV_BBVIA30_BM1_3_BM2_3 < 100; nTSV_BBVIA30_BM1_3_BM2_3++){
     G4double x = TSV_BBVIA30_BM1_3_BM2_3Xmin1 + (nTSV_BBVIA30_BM1_3_BM2_3X%10)*TSV_BBVIA30_BM1_3_BM2_3Xstep1;
     G4double y = TSV_BBVIA30_BM1_3_BM2_3Ymin1 + (nTSV_BBVIA30_BM1_3_BM2_3X/10)*TSV_BBVIA30_BM1_3_BM2_3Ystep1;
     G4ThreeVector posTSV_BBVIA30_BM1_3_BM2_3 = G4ThreeVector(x, y, 0.5*(BM1_3High+BM2_3High));
@@ -2024,7 +2024,7 @@ G4Tubs* solidTSVINNERBGAPAD2 =
     new G4Tubs("TSVINNERBGAPAD2",
     0,
     TSVINNERBGAPAD2R,
-    0.5*(BM2_2High-FM1_3High)
+    0.5*(BM2_2High-FM1_3High),
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSVINNERBGAPAD2 =
@@ -2735,7 +2735,7 @@ G4ThreeVector posFM1_2 = G4ThreeVector(0,0,0.5*(FM1_2High+FPI_CORE_2High));
 //TSV-BBVIA-30-FM1_2_BM1_2，0.01mm,copper
 G4double TSV_BBVIA30_FM1_2_BM1_2R = 0.01*mm;
 G4Box* solidTSV_BBVIA30_FM1_2_BM1_2 =
-      new G4Box("TSV_BBVIA30_FM1_2_BM1_2",
+      new G4Tubs("TSV_BBVIA30_FM1_2_BM1_2",
                 0,
                 TSV_BBVIA30_FM1_2_BM1_2R,
                 0.5*(FM1_2High-BM1_2High),
@@ -3090,7 +3090,7 @@ G4LogicalVolume* logicTSV_BBVIA30_BM1_1_BM2_1 =
     new G4LogicalVolume(solidTSV_BBVIA30_BM1_1_BM2_1,
                         copper,
                         "TSV_BBVIA30_BM1_1_BM2_1");
-TSV_BBVIA30_BM1_1_BM2_1step1 = 0.0638*mm;
+G4double TSV_BBVIA30_BM1_1_BM2_1step1 = 0.0638*mm;
 G4int nTSV_BBVIA30_BM1_1_BM2_1 = 0;
 for(G4double x = -3.5*mm, y = 3.625*mm; x<=-1.5*mm, y>=1.625*mm;x += 0.5*mm ,y -= 0.5*mm){
   new G4PVPlacement(0,
@@ -3162,7 +3162,7 @@ for(G4double x = -1.0*mm, y = 3.625*mm; x<=1.0*mm, y>=1.625*mm;x += 0.5*mm ,y -=
                   true);
 }        
 
-for(G4double x = -1.5*mm, y = 1.125*mm;y>=0.625*mm;,y -= 0.5*mm){
+for(G4double x = -1.5*mm, y = 1.125*mm;y>=0.625*mm;y -= 0.5*mm){
   new G4PVPlacement(0,
                   G4ThreeVector(x + TSV_BBVIA30_BM1_1_BM2_1step1,y + TSV_BBVIA30_BM1_1_BM2_1step1, 0.5*(BM1_1High+BM2_1High)),
                   logicTSV_BBVIA30_BM1_1_BM2_1,
@@ -3615,7 +3615,7 @@ for (G4int i = 0; i < 160; i++){
   G4double x = TSV_BBVIA30_BM1_1_BM2_1Xmin1 + i%40*TSV_BBVIA30_BM1_1_BM2_1Xstep1;
   G4double y = TSV_BBVIA30_BM1_1_BM2_1Ymin1 + i/40*TSV_BBVIA30_BM1_1_BM2_1Ystep1;
   new G4PVPlacement(0,
-                  G4ThreeVector(x,y,0.5*(TSV_BBVIA30_BM1_1_BM2_1High+BM1_1High)),
+                  G4ThreeVector(x,y,0.5*(BM2_1High+BM1_1High)),
                   logicTSV_BBVIA30_BM1_1_BM2_1,
                   "TSV_BBVIA30_BM1_1_BM2_1",
                   logicEnv,
@@ -3633,7 +3633,7 @@ for (G4int i = 0; i < 159; i++){
   G4double x = TSV_BBVIA30_BM1_1_BM2_1Xmin2 + i%40*TSV_BBVIA30_BM1_1_BM2_1Xstep2;
   G4double y = TSV_BBVIA30_BM1_1_BM2_1Ymin2 + i/40*TSV_BBVIA30_BM1_1_BM2_1Ystep2;
   new G4PVPlacement(0,
-                  G4ThreeVector(x,y,0.5*(TSV_BBVIA30_BM1_1_BM2_1High+BM1_1High)),
+                  G4ThreeVector(x,y,0.5*(BM2_1High+BM1_1High)),
                   logicTSV_BBVIA30_BM1_1_BM2_1,
                   "TSV_BBVIA30_BM1_1_BM2_1",
                   logicEnv,
@@ -3651,7 +3651,7 @@ for (G4int i = 0; i < 120; i++){
   G4double x = TSV_BBVIA30_BM1_1_BM2_1Xmin3 + i%30*TSV_BBVIA30_BM1_1_BM2_1Xstep3;
   G4double y = TSV_BBVIA30_BM1_1_BM2_1Ymin3 + i/30*TSV_BBVIA30_BM1_1_BM2_1Ystep3;
   new G4PVPlacement(0,
-                  G4ThreeVector(x,y,0.5*(TSV_BBVIA30_BM1_1_BM2_1High+BM1_1High)),
+                  G4ThreeVector(x,y,0.5*(BM2_1High+BM1_1High)),
                   logicTSV_BBVIA30_BM1_1_BM2_1,
                   "TSV_BBVIA30_BM1_1_BM2_1",
                   logicEnv,
@@ -3669,7 +3669,7 @@ for (G4int i = 0; i < 120; i++){
   G4double x = TSV_BBVIA30_BM1_1_BM2_1Xmin4 + i%30*TSV_BBVIA30_BM1_1_BM2_1Xstep4;
   G4double y = TSV_BBVIA30_BM1_1_BM2_1Ymin4 + i/30*TSV_BBVIA30_BM1_1_BM2_1Ystep4;
   new G4PVPlacement(0,
-                  G4ThreeVector(x,y,0.5*(TSV_BBVIA30_BM1_1_BM2_1High+BM1_1High)),
+                  G4ThreeVector(x,y,0.5*(BM2_1High+BM1_1High)),
                   logicTSV_BBVIA30_BM1_1_BM2_1,
                   "TSV_BBVIA30_BM1_1_BM2_1",
                   logicEnv,
@@ -3912,7 +3912,7 @@ G4Tubs* solidTSVIPDPAD =
     new G4Tubs("TSVIPDPAD",
     0,
     TSVIPDPADR,
-    0.5*(UBM_1High-FM1_1High)
+    0.5*(UBM_1High-FM1_1High),
     0.*deg,
     360.*deg);
 G4LogicalVolume* logicTSVIPDPAD =
