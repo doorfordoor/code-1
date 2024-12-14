@@ -385,11 +385,11 @@ for (int i = 0; i < 527; ++i) {
     G4ThreeVector posTSV_BBVIA30_BM1_5_BM2_5(x, y, z);
 
     // 检查是否与其他TSV重叠
-    if (OverlapWithOtherTSV_BBVIA30_BM1_5_BM2_5(posTSV_BBVIA30_BM1_5_BM2_5, TSV_BBVIA30_BM1_5_BM2_5R)) {
-        // 如果重叠，打印错误信息并停止程序
-        G4cerr << "TSV at position (" << x << ", " << y << ", " << z << ") overlaps with another TSV!" << G4endl;
-        exit(1);
-    }
+    // if (OverlapWithOtherTSV_BBVIA30_BM1_5_BM2_5(posTSV_BBVIA30_BM1_5_BM2_5, TSV_BBVIA30_BM1_5_BM2_5R)) {
+    //     // 如果重叠，打印错误信息并停止程序
+    //     G4cerr << "TSV at position (" << x << ", " << y << ", " << z << ") overlaps with another TSV!" << G4endl;
+    //     exit(1);
+    // }
 
     // 创建并放置TSV
     new G4PVPlacement(0,
@@ -1513,7 +1513,7 @@ for(G4int nTSV_BBVIA30_BM1_3_BM2_3X = 0; nTSV_BBVIA30_BM1_3_BM2_3X < 100; nTSV_B
                       nTSV_BBVIA30_BM1_3_BM2_3,
                       true);                      
 }
-G4double TSV_BBVIA30_BM1_3_BM2_3step1 = 0.36740*mm;
+G4double TSV_BBVIA30_BM1_3_BM2_3step1 = 0.063620*mm;
 new G4PVPlacement(0,
                 G4ThreeVector(4.00*mm + TSV_BBVIA30_BM1_3_BM2_3step1, 3.125*mm + TSV_BBVIA30_BM1_3_BM2_3step1, 0.5*(BM1_3High+BM2_3High)),
                 logicTSV_BBVIA30_BM1_3_BM2_3,
@@ -2164,6 +2164,21 @@ G4ThreeVector posBM1_2 = G4ThreeVector(0,0,0.5*(BM1_2High+BP1_2High));
                       false,
                       0,
                       true);
+
+//TSV-BBVIA30-BM1_2_BM2_2，0.015mm,812,copper
+G4double TSV_BBVIA30_BM1_2_BM2_2R = 0.015*mm;    
+G4Tubs* solidTSV_BBVIA30_BM1_2_BM2_2 =
+    new G4Tubs("TSV_BBVIA30_BM1_2_BM2_2",
+    0,
+    TSV_BBVIA30_BM1_2_BM2_2R,
+    0.5*(BM1_2High-BM2_2High),
+    0.*deg,
+    360.*deg);        
+G4LogicalVolume* logicTSV_BBVIA30_BM1_2_BM2_2 =
+    new G4LogicalVolume(solidTSV_BBVIA30_BM1_2_BM2_2,
+                        copper,
+                        "TSV_BBVIA30_BM1_2_BM2_2");
+
 
 //BPI_CORE_2,type:Dielectric,Material:FR_4
 G4double BPI_CORE_2High = 1.76372*mm;
