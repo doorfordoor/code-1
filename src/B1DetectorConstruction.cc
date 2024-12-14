@@ -59,6 +59,8 @@ G4VPhysicalVolume* B1DetectorConstruction::Construct()
 G4NistManager* nist = G4NistManager::Instance();
   G4double env_sizeX = 40*mm, env_sizeY = 40*mm, env_sizeZ = 10*mm;
   G4double world_sizeXY = 100*mm ,world_sizeZ = 50*mm;
+
+
   G4Material* air = nist->FindOrBuildMaterial("G4_AIR");
   G4Material* copper = nist->FindOrBuildMaterial("G4_Cu");   
   G4double p, a; 
@@ -1500,9 +1502,9 @@ G4double TSV_BBVIA30_BM1_3_BM2_3Ymin1 = 0.5*mm + TSV_BBVIA30_BM1_3_BM2_3R;
 G4double TSV_BBVIA30_BM1_3_BM2_3Ymax1 = 3.75*mm - TSV_BBVIA30_BM1_3_BM2_3R;
 G4double TSV_BBVIA30_BM1_3_BM2_3Xstep1 = (TSV_BBVIA30_BM1_3_BM2_3Xmax1 - TSV_BBVIA30_BM1_3_BM2_3Xmin1)/9;
 G4double TSV_BBVIA30_BM1_3_BM2_3Ystep1 = (TSV_BBVIA30_BM1_3_BM2_3Ymax1 - TSV_BBVIA30_BM1_3_BM2_3Ymin1)/9;
-for(G4int nTSV_BBVIA30_BM1_3_BM2_3 = 0; nTSV_BBVIA30_BM1_3_BM2_3 < 100; nTSV_BBVIA30_BM1_3_BM2_3++){
-    G4double x = TSV_BBVIA30_BM1_3_BM2_3Xmin1 + (nTSV_BBVIA30_BM1_3_BM2_3%10)*TSV_BBVIA30_BM1_3_BM2_3Xstep1;
-    G4double y = TSV_BBVIA30_BM1_3_BM2_3Ymin1 + (nTSV_BBVIA30_BM1_3_BM2_3/10)*TSV_BBVIA30_BM1_3_BM2_3Ystep1;
+for(G4int nTSV_BBVIA30_BM1_3_BM2_3X = 0; nTSV_BBVIA30_BM1_3_BM2_3X < 100; nTSV_BBVIA30_BM1_3_BM2_3X++){
+    G4double x = TSV_BBVIA30_BM1_3_BM2_3Xmin1 + (nTSV_BBVIA30_BM1_3_BM2_3X%10)*TSV_BBVIA30_BM1_3_BM2_3Xstep1;
+    G4double y = TSV_BBVIA30_BM1_3_BM2_3Ymin1 + (nTSV_BBVIA30_BM1_3_BM2_3X/10)*TSV_BBVIA30_BM1_3_BM2_3Ystep1;
     G4ThreeVector posTSV_BBVIA30_BM1_3_BM2_3 = G4ThreeVector(x, y, 0.5*(BM1_3High+BM2_3High));
     new G4PVPlacement(0,
                       posTSV_BBVIA30_BM1_3_BM2_3,
@@ -3775,6 +3777,7 @@ G4ThreeVector posFM1_1 = G4ThreeVector(0,0,0.5*(FM1_1High+FPI_CORE_1High));
                       0,
                       true);
 
+
 G4double TSV_BBVIA_30_FM1_1_BM1_1R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA_30_FM1_1_BM1_1 =
     new G4Tubs("TSV_BBVIA_30_FM1_1_BM1_1",
@@ -3795,12 +3798,10 @@ G4double TSV_BBVIA_30_FM1_1_BM1_1Ymax1 = -4.05*mm - 3*TSV_BBVIA_30_FM1_1_BM1_1R;
 G4double TSV_BBVIA_30_FM1_1_BM1_1Xstep1 = (TSV_BBVIA_30_FM1_1_BM1_1Xmax1 - TSV_BBVIA_30_FM1_1_BM1_1Xmin1)/42;
 G4double TSV_BBVIA_30_FM1_1_BM1_1Ystep1 = (TSV_BBVIA_30_FM1_1_BM1_1Ymax1 - TSV_BBVIA_30_FM1_1_BM1_1Ymin1)/3;
 for (G4int i=0; i<171; i++){
-    G4double z = 0.5 * (FM1_1High + BM1_1High);
-    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin1 + TSV_BBVIA_30_FM1_1_BM1_1Xstep1*(nTSV_BBVIA_30_FM1_1_BM1_1%43);
-    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin1 + TSV_BBVIA_30_FM1_1_BM1_1Ystep1*(nTSV_BBVIA_30_FM1_1_BM1_1/43);
-    G4ThreeVector posTSV_BBVIA_30_FM1_1_BM1_1 = G4ThreeVector(x, y, z);
+    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin1 + TSV_BBVIA_30_FM1_1_BM1_1Xstep1*(i%43);
+    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin1 + TSV_BBVIA_30_FM1_1_BM1_1Ystep1*(i/43);
     new G4PVPlacement(0,
-                      posTSV_BBVIA_30_FM1_1_BM1_1,
+                      G4ThreeVector(x, y, 0.5 * (FM1_1High + BM1_1High)),
                       logicTSV_BBVIA_30_FM1_1_BM1_1,
                       "TSV_BBVIA_30_FM1_1_BM1_1",
                       logicEnv,
@@ -3815,12 +3816,10 @@ G4double TSV_BBVIA_30_FM1_1_BM1_1Ymax2 = 4.8*mm - TSV_BBVIA_30_FM1_1_BM1_1R;
 G4double TSV_BBVIA_30_FM1_1_BM1_1Xstep2 = (TSV_BBVIA_30_FM1_1_BM1_1Xmax2 - TSV_BBVIA_30_FM1_1_BM1_1Xmin2)/42;
 G4double TSV_BBVIA_30_FM1_1_BM1_1Ystep2 = (TSV_BBVIA_30_FM1_1_BM1_1Ymax2 - TSV_BBVIA_30_FM1_1_BM1_1Ymin2)/3;
 for (G4int i=0; i<171; i++){
-    G4double z = 0.5 * (FM1_1High + BM1_1High);
-    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin2 + TSV_BBVIA_30_FM1_1_BM1_1Xstep2*(nTSV_BBVIA_30_FM1_1_BM1_1%43);
-    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin2 + TSV_BBVIA_30_FM1_1_BM1_1Ystep2*(nTSV_BBVIA_30_FM1_1_BM1_1/43);
-    G4ThreeVector posTSV_BBVIA_30_FM1_1_BM1_1 = G4ThreeVector(x, y, z);
+    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin2 + TSV_BBVIA_30_FM1_1_BM1_1Xstep2*(i%43);
+    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin2 + TSV_BBVIA_30_FM1_1_BM1_1Ystep2*(i/43);
     new G4PVPlacement(0,
-                      posTSV_BBVIA_30_FM1_1_BM1_1,
+                      G4ThreeVector(x, y, 0.5 * (FM1_1High + BM1_1High)),
                       logicTSV_BBVIA_30_FM1_1_BM1_1,
                       "TSV_BBVIA_30_FM1_1_BM1_1",
                       logicEnv,
@@ -3836,11 +3835,10 @@ G4double TSV_BBVIA_30_FM1_1_BM1_1Xstep3 = (TSV_BBVIA_30_FM1_1_BM1_1Xmax3 - TSV_B
 G4double TSV_BBVIA_30_FM1_1_BM1_1Ystep3 = (TSV_BBVIA_30_FM1_1_BM1_1Ymax3 - TSV_BBVIA_30_FM1_1_BM1_1Ymin3)/32;
 for (G4int i=0; i<131; i++){
     G4double z = 0.5 * (FM1_1High + BM1_1High);
-    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin3 + TSV_BBVIA_30_FM1_1_BM1_1Xstep3*(nTSV_BBVIA_30_FM1_1_BM1_1%4);
-    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin3 + TSV_BBVIA_30_FM1_1_BM1_1Ystep3*(nTSV_BBVIA_30_FM1_1_BM1_1/4);
-    G4ThreeVector posTSV_BBVIA_30_FM1_1_BM1_1 = G4ThreeVector(x, y, z);
+    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin3 + TSV_BBVIA_30_FM1_1_BM1_1Xstep3*(i%4);
+    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin3 + TSV_BBVIA_30_FM1_1_BM1_1Ystep3*(i/4);
     new G4PVPlacement(0,
-                      posTSV_BBVIA_30_FM1_1_BM1_1,
+                      G4ThreeVector(x, y, 0.5 * (FM1_1High + BM1_1High)),
                       logicTSV_BBVIA_30_FM1_1_BM1_1,
                       "TSV_BBVIA_30_FM1_1_BM1_1",
                       logicEnv,
@@ -3855,12 +3853,10 @@ G4double TSV_BBVIA_30_FM1_1_BM1_1Ymax4 = 4.05*mm - 3*TSV_BBVIA_30_FM1_1_BM1_1R;
 G4double TSV_BBVIA_30_FM1_1_BM1_1Xstep4 = (TSV_BBVIA_30_FM1_1_BM1_1Xmax4 - TSV_BBVIA_30_FM1_1_BM1_1Xmin4)/3;
 G4double TSV_BBVIA_30_FM1_1_BM1_1Ystep4 = (TSV_BBVIA_30_FM1_1_BM1_1Ymax4 - TSV_BBVIA_30_FM1_1_BM1_1Ymin4)/32;
 for (G4int i=0; i<132; i++){
-    G4double z = 0.5 * (FM1_1High + BM1_1High);
-    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin4 + TSV_BBVIA_30_FM1_1_BM1_1Xstep4*(nTSV_BBVIA_30_FM1_1_BM1_1%4);
-    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin4 + TSV_BBVIA_30_FM1_1_BM1_1Ystep4*(nTSV_BBVIA_30_FM1_1_BM1_1/4);
-    G4ThreeVector posTSV_BBVIA_30_FM1_1_BM1_1 = G4ThreeVector(x, y, z);
+    G4double x = TSV_BBVIA_30_FM1_1_BM1_1Xmin4 + TSV_BBVIA_30_FM1_1_BM1_1Xstep4*(i%4);
+    G4double y = TSV_BBVIA_30_FM1_1_BM1_1Ymin4 + TSV_BBVIA_30_FM1_1_BM1_1Ystep4*(i/4);
     new G4PVPlacement(0,
-                      posTSV_BBVIA_30_FM1_1_BM1_1,
+                      G4ThreeVector(x, y, 0.5 * (FM1_1High + BM1_1High)),
                       logicTSV_BBVIA_30_FM1_1_BM1_1,
                       "TSV_BBVIA_30_FM1_1_BM1_1",
                       logicEnv,
@@ -3868,7 +3864,6 @@ for (G4int i=0; i<132; i++){
                       nTSV_BBVIA_30_FM1_1_BM1_1++,
                       true);
 }
-
 //FP1_1,type:Dielectric,Material:Polyimide
 G4double FP1_1High = 2.4454*mm;
 G4Box* solidFP1_1 =
