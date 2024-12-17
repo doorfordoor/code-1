@@ -502,7 +502,7 @@ G4ThreeVector posFM1_5 = G4ThreeVector(0,0,0.5*(FM1_5High+FPI_CORE_5High));
                       0,
                       true);
 
-//TSV-BBVIA-30-FM1_5_BM1_5,copper,679个，r=0.01mm
+//焊盘：TSV-BBVIA-30-FM1_5_BM1_5,copper,679个，r=0.01mm
 G4double TSV_BBVIA30_FM1_5_BM1_5R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA30_FM1_5_BM1_5 =
     new G4Tubs("TSV_BBVIA30_FM1_5_BM1_5",
@@ -746,7 +746,7 @@ G4ThreeVector posBM2_4 = G4ThreeVector(0,0,0.5*(BM2_4High+BP2_4High));
                       0,
                       true);
 
-//TSVINNERBGAPAD4,BM2_4-FM1_5,r=0.03mm
+//焊盘：TSVINNERBGAPAD4,BM2_4-FM1_5,r=0.03mm
 G4double TSVINNERBGAPAD4R = 0.03*mm;
 G4Tubs* solidTSVINNERBGAPAD4 =
     new G4Tubs("TSVINNERBGAPAD4",
@@ -895,7 +895,7 @@ G4ThreeVector posBM1_4 = G4ThreeVector(0,0,0.5*(BM1_4High+BP1_4High));
                       true);
 
 
-//TSV-BBVIA30-BM1_4_BM2_4,copper,897，0.015mm
+//焊盘：TSV-BBVIA30-BM1_4_BM2_4,copper,897，0.015mm
 G4double TSV_BBVIA30_BM1_4_BM2_4R = 0.015*mm;
 G4Tubs* solidTSV_BBVIA30_BM1_4_BM2_4 =
     new G4Tubs("TSV_BBVIA30_BM1_4_BM2_4",
@@ -1128,7 +1128,7 @@ G4ThreeVector posFM1_4 = G4ThreeVector(0,0,0.5*(FM1_4High+FPI_CORE_4High));
                       0,
                       true);
 
-//TSV-BBVIA-30-FM1_4_BM1_4,0.01mm
+//焊盘：TSV-BBVIA-30-FM1_4_BM1_4,0.01mm
 G4double TSV_BBVIA_30_FM1_4_BM1_4R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA_30_FM1_4_BM1_4 =
     new G4Tubs("TSV_BBVIA_30_FM1_4_BM1_4",
@@ -1338,7 +1338,7 @@ G4ThreeVector posBM2_3 = G4ThreeVector(0,0,0.5*(BM2_3High+BP2_3High));
                       0,
                       true);
 
-//TSVINNERBGAPAD3,0.03*mm,copper
+//焊盘：TSVINNERBGAPAD3,0.03*mm,copper
 G4double TSVINNERBGAPAD3R = 0.03*mm;
 G4Tubs* solidTSVINNERBGAPAD3 =
     new G4Tubs("TSVINNERBGAPAD3",
@@ -1483,7 +1483,7 @@ G4ThreeVector posBM1_3 = G4ThreeVector(0,0,0.5*(BM1_3High+BP1_3High));
                       false,
                       0,
                       true);
-//TSV-BBVIA30-BM1_3_BM2_3,0.0015mm,copper
+//焊盘，TSV-BBVIA30-BM1_3_BM2_3,0.0015mm,copper
 G4double TSV_BBVIA30_BM1_3_BM2_3R = 0.015*mm;
 G4Tubs* solidTSV_BBVIA30_BM1_3_BM2_3 =
     new G4Tubs("TSV_BBVIA30_BM1_3_BM2_3",
@@ -1811,7 +1811,7 @@ G4ThreeVector posFM1_3 = G4ThreeVector(0,0,0.5*(FM1_3High+FPI_CORE_3High));
                       0,
                       true);
 
-//TSV-BBVIA-30-FM1_3_BM1_3,0.01mm
+//焊盘：TSV-BBVIA-30-FM1_3_BM1_3,0.01mm
 G4double TSV_BBVIA_30_FM1_3_BM1_3R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA_30_FM1_3_BM1_3 =
     new G4Tubs("TSV_BBVIA_30_FM1_3_BM1_3",
@@ -2020,7 +2020,7 @@ G4ThreeVector posBM2_2 = G4ThreeVector(0,0,0.5*(BM2_2High+BP2_2High));
                       false,
                       0,
                       true);
-
+//焊盘
 G4double TSVINNERBGAPAD2R = 0.03*mm;
 G4Tubs* solidTSVINNERBGAPAD2 =
     new G4Tubs("TSVINNERBGAPAD2",
@@ -2167,7 +2167,7 @@ G4ThreeVector posBM1_2 = G4ThreeVector(0,0,0.5*(BM1_2High+BP1_2High));
                       0,
                       true);
 
-//TSV-BBVIA30-BM1_2_BM2_2，0.015mm,812,copper
+//焊盘：TSV-BBVIA30-BM1_2_BM2_2，0.015mm,812,copper
 G4double TSV_BBVIA30_BM1_2_BM2_2R = 0.015*mm;    
 G4Tubs* solidTSV_BBVIA30_BM1_2_BM2_2 =
     new G4Tubs("TSV_BBVIA30_BM1_2_BM2_2",
@@ -2734,7 +2734,7 @@ G4ThreeVector posFM1_2 = G4ThreeVector(0,0,0.5*(FM1_2High+FPI_CORE_2High));
                       0,
                       true);
 
-//TSV-BBVIA-30-FM1_2_BM1_2，0.01mm,copper
+//TSV-BBVIA-30-FM1_2_BM1_2，0.01mm,copper,焊盘
 G4double TSV_BBVIA30_FM1_2_BM1_2R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA30_FM1_2_BM1_2 =
       new G4Tubs("TSV_BBVIA30_FM1_2_BM1_2",
@@ -2934,7 +2934,7 @@ G4ThreeVector posBM2_1 = G4ThreeVector(0,0,0.5*(BM2_1High+BP2_1High));
                       false,
                       0,
                       true);
-//G4double BM2_1High = 2.2554*mm;   
+//焊盘
 G4double TSVINNERBGAPAD1R = 0.03*mm;
 G4Tubs* solidTSVINNERBGAPAD1 =
     new G4Tubs("TSVINNERBGAPAD1",
@@ -3080,6 +3080,7 @@ G4ThreeVector posBM1_1 = G4ThreeVector(0,0,0.5*(BM1_1High+BP1_1High));
                       0,
                       true); 
 
+//焊盘
 G4double TSV_BBVIA30_BM1_1_BM2_1R = 0.015*mm;
 G4Tubs* solidTSV_BBVIA30_BM1_1_BM2_1 =
     new G4Tubs("TSV_BBVIA30_BM1_1_BM2_1",
@@ -3775,7 +3776,7 @@ G4ThreeVector posFM1_1 = G4ThreeVector(0,0,0.5*(FM1_1High+FPI_CORE_1High));
                       0,
                       true);
 
-
+//焊盘
 G4double TSV_BBVIA_30_FM1_1_BM1_1R = 0.01*mm;
 G4Tubs* solidTSV_BBVIA_30_FM1_1_BM1_1 =
     new G4Tubs("TSV_BBVIA_30_FM1_1_BM1_1",
@@ -3861,6 +3862,106 @@ for (G4int i=0; i<132; i++){
                       nTSV_BBVIA_30_FM1_1_BM1_1++,
                       true);
 }
+
+//FM1_1line,copper,导线
+G4double FM1_1linelongth = 9.7*mm;
+G4double FM1_1linewidth = 0.02*mm;
+G4double FM1_1linehigh = 0.004*mm;
+G4Box *solidFM1_1line =
+    new G4Box("FM1_1line",
+    0.5*FM1_1linelongth,0.5*FM1_1linewidth,0.5*FM1_1linehigh);
+G4LogicalVolume* logicFM1_1line =
+    new G4LogicalVolume(solidFM1_1line,
+                        copper,
+                        "FM1_1line");
+G4int nFM1_1line = 0;
+for(G4double x = -5.285*mm + 0.5*FM1_1linewidth; x < 5.285*mm - 0.5*FM1_1linewidth; x += 0.05*mm){
+    G4ThreeVector posFM1_1line = G4ThreeVector(x,0,0);
+    new G4PVPlacement(0,
+                      posFM1_1line,
+                      logicFM1_1line,
+                      "FM1_1line",
+                      logicFM1_1,
+                      false,
+                      nFM1_1line++,
+                      true);
+}
+
+//FM1_1DDR3,引脚
+G4double FM1_1DDR3width = 0.047*mm;
+G4double FM1_1DDR3high = 0.059*mm;
+G4Box *solidFM1_1DDR3 =
+    new G4Box("FM1_1DDR3",
+    0.5*FM1_1DDR3width,0.5*FM1_1DDR3width,0.5*FM1_1linehigh);
+G4LogicalVolume* logicFM1_1DDR3 =
+    new G4LogicalVolume(solidFM1_1DDR3,
+                        copper,
+                        "FM1_1DDR3Pin");
+G4double FM1_1DDR3xmax1 = 4.26013*mm;  
+G4double FM1_1DDR3xmin1 = 2.33726*mm;   
+G4double FM1_1y = 0.1543*mm;    
+G4double FM1_1DDR3xstep1 = (FM1_1DDR3xmax1 - FM1_1DDR3xmin1)/29;
+for(G4int i = 0; i < 30; i++){
+    G4double x = FM1_1DDR3xmin1 + FM1_1DDR3xstep1*i;
+    G4ThreeVector posFM1_1DDR3 = G4ThreeVector(x,FM1_1y,0);
+    new G4PVPlacement(0,
+                      posFM1_1DDR3,
+                      logicFM1_1DDR3,
+                      "FM1_1DDR3",
+                      logicFM1_1,
+                      false,
+                      i,
+                      true);      
+}      
+G4double FM1_1DDR3xmax2 = 2.1068*mm;
+G4double FM1_1DDR3xmin2 = -0.43972*mm;
+G4double FM1_1DDR3xstep2 = (FM1_1DDR3xmax2 - FM1_1DDR3xmin2)/36;
+for(G4int i = 0; i < 37; i++){
+    G4double x = FM1_1DDR3xmin2 + FM1_1DDR3xstep2*i;
+    G4ThreeVector posFM1_1DDR3 = G4ThreeVector(x,FM1_1y,0);
+    new G4PVPlacement(0,
+                      posFM1_1DDR3,
+                      logicFM1_1DDR3,
+                      "FM1_1DDR3",
+                      logicFM1_1,
+                      false,
+                      i+30,
+                      true);
+}
+G4double FM1_1DDR3xmax3 = -0.6371*mm;
+G4double FM1_1DDR3xmin3 = -2.01868*mm;
+G4double FM1_1DDR3xstep3 = (FM1_1DDR3xmax3 - FM1_1DDR3xmin3)/21;
+for(G4int i = 0; i < 22; i++){
+    G4double x = FM1_1DDR3xmin3 + FM1_1DDR3xstep3*i;
+    G4ThreeVector posFM1_1DDR3 = G4ThreeVector(x,FM1_1y,0);
+    new G4PVPlacement(0,
+                      posFM1_1DDR3,
+                      logicFM1_1DDR3,
+                      "FM1_1DDR3",
+                      logicFM1_1,
+                      false,
+                      i+67,
+                      true);
+}
+G4double FM1_1DDR3xmax4 = -2.35222*mm;
+G4double FM1_1DDR3xmin4 = -4.26013*mm;
+G4double FM1_1DDR3xstep4 = (FM1_1DDR3xmax4 - FM1_1DDR3xmin4)/28;
+for(G4int i = 0; i < 29; i++){
+    G4double x = FM1_1DDR3xmin4 + FM1_1DDR3xstep4*i;
+    G4ThreeVector posFM1_1DDR3 = G4ThreeVector(x,FM1_1y,0);
+    new G4PVPlacement(0,
+                      posFM1_1DDR3,
+                      logicFM1_1DDR3,
+                      "FM1_1DDR3",
+                      logicFM1_1,
+                      false,
+                      i+89,
+                      true);
+}
+
+
+    
+
 //FP1_1,type:Dielectric,Material:Polyimide
 G4double FP1_1High = 2.4454*mm;
 G4Box* solidFP1_1 =
@@ -3899,6 +4000,7 @@ G4ThreeVector posUBM_1 = G4ThreeVector(0,0,0.5*(UBM_1High+FP1_1High));
                       0,
                       true);
 
+//焊盘
 G4double TSVIPDPADR = 0.03*mm;
 G4Tubs* solidTSVIPDPAD =
     new G4Tubs("TSVIPDPAD",
