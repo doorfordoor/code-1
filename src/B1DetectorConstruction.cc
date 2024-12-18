@@ -2896,6 +2896,7 @@ G4ThreeVector posUBM_B_1 = G4ThreeVector(0,0,0.5*(UBM_B_1High+UNNAMED_015High));
                       false,
                       0,
                       true);
+                    
 
 //BP2_1,type:Dielectric,Material:FR_4
 G4double BP2_1High = 2.22492*mm; 
@@ -3062,6 +3063,7 @@ G4ThreeVector posBP1_1 = G4ThreeVector(0,0,0.5*(BP1_1High+BM2_1High));
                       true);
 
 //BM1_1,type:Metal,Material:Filled
+//G4double BP1_1High = 2.2634*mm;
 G4double BM1_1High = 2.2674*mm;   
 G4Box* solidBM1_1 =
     new G4Box("BM1_1",
@@ -3079,6 +3081,135 @@ G4ThreeVector posBM1_1 = G4ThreeVector(0,0,0.5*(BM1_1High+BP1_1High));
                       false,
                       0,
                       true); 
+//引线
+G4double BM1_1linewidth = 0.02*mm;
+G4double BM1_1linelongth = 9.7*mm;  
+G4double BM1_1linehigh = 0.004*mm;
+G4Box* solidBM1_1line =
+    new G4Box("BM1_1line",
+    0.5*BM1_1linewidth, 0.5*BM1_1linelongth,0.5*BM1_1linehigh);  
+G4LogicalVolume* logicBM1_1line =
+    new G4LogicalVolume(solidBM1_1line,
+                        copper,
+                        "BM1_1line");
+G4int nTSV_BBVIA30_BM1_1_BM2_1 = 0;
+for(G4double x = -5.285*mm+0.5*BM1_1linewidth; x<=1.142*mm-0.5*BM1_1linewidth; x+=0.05*mm){
+    G4ThreeVector posBM1_1line = G4ThreeVector(x,0,0);
+    new G4PVPlacement(0,
+                      posBM1_1line,
+                      logicBM1_1line,
+                      "BM1_1line",
+                      logicBM1_1,
+                      false,
+                      nTSV_BBVIA30_BM1_1_BM2_1++,
+                      true);
+}                    
+G4double BM1_1linelongth1 = 4.835*mm;
+G4Box* solidBM1_1line1 =
+    new G4Box("BM1_1line1",
+    0.5*BM1_1linewidth, 0.5*BM1_1linelongth1,0.5*BM1_1linehigh);
+G4LogicalVolume* logicBM1_1line1 =
+    new G4LogicalVolume(solidBM1_1line1,
+                        copper,
+                        "BM1_1line1");
+G4double nTSV_BBVIA30_BM1_1_BM2_1_1 = 0;
+for(G4double x = 1.142*mm+0.5*BM1_1linewidth; x<=3.5216*mm-0.5*BM1_1linewidth; x+=0.05*mm){
+    G4ThreeVector posBM1_1line1 = G4ThreeVector(x,-2.4025*mm,0);  
+    new G4PVPlacement(0,
+                      posBM1_1line1,
+                      logicBM1_1line1,
+                      "BM1_1line1",
+                      logicBM1_1,
+                      false,
+                      nTSV_BBVIA30_BM1_1_BM2_1_1++,
+                      true);                
+}
+G4double BM1_1linelongth2 = 2.025*mm;    
+G4Box* solidBM1_1line2 =
+    new G4Box("BM1_1line2",
+    0.5*BM1_1linewidth, 0.5*BM1_1linelongth2,0.5*BM1_1linehigh);
+G4LogicalVolume* logicBM1_1line2 =
+    new G4LogicalVolume(solidBM1_1line2,
+                        copper,
+                        "BM1_1line2");
+G4double nTSV_BBVIA30_BM1_1_BM2_1_2 = 0;
+for(G4double x = 1.142*mm+0.5*BM1_1linewidth; x<=4.14*mm-0.5*BM1_1linewidth; x+=0.05*mm){
+    G4ThreeVector posBM1_1line2 = G4ThreeVector(x,3.8375*mm,0); 
+    new G4PVPlacement(0,
+                      posBM1_1line2,
+                      logicBM1_1line2,
+                      "BM1_1line2",
+                      logicBM1_1,
+                      false,
+                      nTSV_BBVIA30_BM1_1_BM2_1_2++,
+                      true);
+}
+G4double BM1_1linelongth3 = 3.79*mm; 
+G4Box* solidBM1_1line3 =
+    new G4Box("BM1_1line3",
+    0.5*BM1_1linewidth, 0.5*BM1_1linelongth3,0.5*BM1_1linehigh);
+G4LogicalVolume* logicBM1_1line3 =
+    new G4LogicalVolume(solidBM1_1line3,
+                        copper,
+                        "BM1_1line3");
+G4double nTSV_BBVIA30_BM1_1_BM2_1_3 = 0;
+for(G4double x = 4.155*mm+0.5*BM1_1linewidth; x<=5.285*mm-0.5*BM1_1linewidth; x+=0.05*mm){
+    G4ThreeVector posBM1_1line3 = G4ThreeVector(x,2.955*mm,0);
+    new G4PVPlacement(0,
+                      posBM1_1line3,
+                      logicBM1_1line3,
+                      "BM1_1line3",
+                      logicBM1_1,
+                      false,
+                      nTSV_BBVIA30_BM1_1_BM2_1_3++,
+                      true);
+}
+G4Box *solidBM1_1line4 =
+    new G4Box("BM1_1line4",
+    0.5*0.875*mm, 0.5*0.54083*mm,0.5*BM1_1linehigh);
+G4LogicalVolume* logicBM1_1line4 =
+    new G4LogicalVolume(solidBM1_1line4,
+                        copper,
+                        "BM1_1line4");
+new G4PVPlacement(0,
+                      G4ThreeVector(4.8425*mm,0.7617*mm,0),
+                      logicBM1_1line4,
+                      "BM1_1line4",
+                      logicBM1_1,
+                      false,
+                      0,
+                      true);   
+G4Box *solidBM1_1line5 =
+    new G4Box("BM1_1line5",
+    0.5*0.875*mm, 0.5*0.4405*mm,0.5*BM1_1linehigh);
+G4LogicalVolume* logicBM1_1line5 =
+    new G4LogicalVolume(solidBM1_1line5,
+                        copper,
+                        "BM1_1line5");
+new G4PVPlacement(0,
+                      G4ThreeVector(4.8425*mm,0.25105*mm,0),
+                      logicBM1_1line5,
+                      "BM1_1line5",
+                      logicBM1_1,
+                      false,
+                      0,
+                      true);
+G4Box *solidBM1_1line6 =
+    new G4Box("BM1_1line6",
+    0.5*1.42*mm, 0.5*0.8755*mm,0.5*BM1_1linehigh);     
+G4LogicalVolume* logicBM1_1line6 =
+    new G4LogicalVolume(solidBM1_1line6,
+                        copper,
+                        "BM1_1line6");
+new G4PVPlacement(0,
+                      G4ThreeVector(4.23*mm,-4.41225*mm,0),
+                      logicBM1_1line6,
+                      "BM1_1line6",
+                      logicBM1_1,
+                      false,
+                      0,
+                      true);                 
+
 
 //焊盘
 G4double TSV_BBVIA30_BM1_1_BM2_1R = 0.015*mm;
@@ -3869,7 +4000,7 @@ G4double FM1_1linewidth = 0.02*mm;
 G4double FM1_1linehigh = 0.004*mm;
 G4Box *solidFM1_1line =
     new G4Box("FM1_1line",
-    0.5*FM1_1linelongth,0.5*FM1_1linewidth,0.5*FM1_1linehigh);
+    0.5*FM1_1linewidth,0.5*FM1_1linelongth,0.5*FM1_1linehigh);
 G4LogicalVolume* logicFM1_1line =
     new G4LogicalVolume(solidFM1_1line,
                         copper,
